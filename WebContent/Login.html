@@ -1,0 +1,144 @@
+<!Doctype html>
+<html>
+<head>
+<style>
+body{
+
+}
+div.signin{
+height:100px;
+padding-top:20px;
+
+}
+.signin{
+display: flex;
+}
+#email {
+  width:200px;
+  background: #FDFCFB;
+   font-family:'Lato', sans-serif;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 5px 5px 5px;
+  margin-left:800px;
+}
+
+.button {
+  height:35px;
+ 
+  border-radius: 5px 5px 5px 5px;
+  text-indent: 5%;
+  margin-top:10px;
+}
+#password{
+  width: 200px;
+  background: #FDFCFB;
+    font-family:'Lato', sans-serif;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 5px 5px 5px;
+}
+#submit {
+  width:100px;
+  background:#27AE60;
+  font-family:'Lato', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  color: #FDFCFB;
+}
+
+#submit:hover {
+  background: #7DCEA0;
+}
+#signup:hover {
+  background: #7DCEA0;
+  }
+input:focus {
+  outline: none;
+  outline: 2px solid #27AE60;
+  box-shadow: 0 0 2px #27AE60;
+}
+.header {
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align:center;
+  color:#2874A6;
+}
+.description {
+  font-size: 17px;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+  margin: -2px 0 45px;
+  text-align:center;
+  color:#2874A6;
+}
+#college{
+width:345px;
+}
+hr{
+margin-top:17px;
+border: 0;
+color:#27AE60 ;
+background-color:#27AE60;
+height:2px;
+width:345px;
+}
+#designation{
+width:345px;
+}
+#uphone{
+width:345px;
+}
+#signup {
+  width:345px;
+  background:#27AE60;
+  font-family:'Lato', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  color: #FDFCFB;
+}
+</style>
+</head>
+<body>
+<div class="signin">
+<form method="get" action="login">
+<input type="text" class="button" id="email" name="username" placeholder="NAME@EXAMPLE.COM" required>
+<input type="password" class="button" id="password" name="password" placeholder="PASSWORD" required>
+<input type="submit" class="button" id="submit" value="SIGN IN">
+</form>
+</div>
+<div >
+<form method="Get" action="Register">
+<div class="header">
+<p>Sign Up as a college</p>
+</div>
+<div class="description">
+<p>Every College can have atmost one publisher.If your college doesn't have a publisher then sign up below</p>
+<div>
+<div class="input">
+<input type="text" class= "button" id="FirstName" name="FirstName" placeholder="FIRST NAME" required>
+<input type="text" class= "button" id="LastName" name="LastName" placeholder="LAST NAME" required><br>
+<input type="text" class= "button" id="Remail" name="Remail" placeholder="NAME@EXAMPLE.COM" required>
+<input type="password" class= "button" id="Rpassword" name="Rpassword" placeholder="PASSWORD" required><br>
+<input type="text" class= "button" id="uphone" name="uphone" placeholder="PHONE NUMBER " required>
+<hr noshade>
+<input type="text" class= "button" id="college" name="college" placeholder="COLLEGE NAME" required><br>
+<input type="text" class= "button" id="designation" name="designation" placeholder="YOUR DESIGNATION IN COLLEGE" required><br>
+<input type="text" class= "button" id="cphone" name="cphone" placeholder="COLLEGE PHONE " required>
+<input type="text" class= "button" id="est" name="est" placeholder="ESTABLISHED IN(YEAR) " required><br>
+<input type="text" class= "button" id="city" name="city" placeholder="CITY" required>
+<input type="text" class= "button" id="state" name="state" placeholder="STATE" required><br>
+<input type="submit" class="button" id="signup" value="SIGN UP">
+
+</div>
+</form>
+</div>
+</body>
+</html>

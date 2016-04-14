@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Event Registration</title>
+<style>
+body{
+
+}
+
+.button {
+  height:35px;
+ 
+  border-radius: 5px 5px 5px 5px;
+  text-indent: 5%;
+  margin-top:10px;
+}
+#password{
+  width: 200px;
+  background: #FDFCFB;
+    font-family:'Lato', sans-serif;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 5px 5px 5px;
+}
+#submit {
+  width:100px;
+  background:#27AE60;
+  font-family:'Lato', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  color: #FDFCFB;
+}
+
+#submit:hover {
+  background: #7DCEA0;
+}
+#signup:hover {
+  background: #7DCEA0;
+  }
+input:focus {
+  outline: none;
+  outline: 2px solid #27AE60;
+  box-shadow: 0 0 2px #27AE60;
+}
+.header {
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align:center;
+  color:#2874A6;
+}
+.description {
+  font-size: 17px;
+  letter-spacing: 1px;
+  line-height: 1.3em;
+  margin: -2px 0 45px;
+  text-align:center;
+  color:#2874A6;
+}
+#fee{
+width:345px;
+}
+hr{
+margin-top:17px;
+border: 0;
+color:#27AE60 ;
+background-color:#27AE60;
+height:2px;
+width:345px;
+}
+#location,#event{
+width:345px;
+}
+#date,#time{
+width:168px;
+}
+#publish {
+  width:345px;
+  background:#27AE60;
+  font-family:'Lato', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  color: #FDFCFB;
+}
+nav{
+margin-top:0px;
+margin-bottom:20px;
+padding-top:40px;
+text-align:center;
+font-weight:bold;
+ font-family: 'Lato', sans-serif;
+}
+nav a{
+	position:static;
+	left:40px;
+    text-decoration:none;
+    font-size:15px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+	color:#27AE60;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+padding-top:10px;
+font-size:17px;
+    color:#616A6B;
+    background-color:#F2F3F4;
+    display: inline-block;
+    height:35px;
+ width:345px;
+  border-radius: 5px 5px 5px 5px;
+  margin-top:10px;
+}
+.inputfile + label {
+	cursor: pointer;
+	
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    color:#2874A6;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<p>Register Below To Publish Your Event</p>
+</div>
+<div>
+<nav>
+  <a href="home">HOME  </a> 
+  <a href="http://localhost:8080/sample/ret">EVENTS </a> 
+  <a href="http://localhost:8080/sample/About.html">ABOUT  </a>
+</nav>
+</div>
+<div>
+<form method="post" action="Publish" enctype="multipart/form-data">
+<div class="description">
+<p>The Information Provided Below May Be Cross Varified</p>
+<div>
+<div class="input">
+<input type="text" class= "button" id="event" name="event" placeholder="EVENT TITLE" required><br>
+ <textarea name="info" class="button" cols="46" rows="10"> EVENT DESCRIPTION... </textarea> <br>
+<input type="text" class= "button" id="cname" name="cname" placeholder="CO-ORDINATIOR NAME" required>
+<input type="text" class= "button" id="phone" name="phone" placeholder="PHONE" required><br>
+<input type="date" class= "button" id="date" name="date" placeholder="DATE" required>
+<input type="time" class= "button" id="time" name="time" placeholder="TIME" required><br>
+<input type="text" class= "button" id="location" name="location" placeholder="EVENT LOCATION" required><br>
+<input type="text" class= "button" id="fee" name="fee" placeholder="EVENT REGOSTRATION FEE" required><br>
+<input type="file" class="inputfile" id="photo" name="photo" size="50">
+<label for="photo">UPLOAD EVENT POSTER</label><br>
+<input type="submit" class="button" id="publish" value="PUBLISH">
+
+</div>
+</form>
+</div>
+</body>
+</html>
