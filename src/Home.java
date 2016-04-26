@@ -3,6 +3,7 @@ import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,10 +26,12 @@ public class Home extends HttpServlet {
 response.setContentType("text/html;charset=UTF-8");
 		int j=colleges.strLength();
 		String log="";
+		String welcome="";
 		HttpSession session=request.getSession(false);
 		if(session!=null){
 			
              log="<a class='SignIn' href='logout'>LOGOUT </a>";
+             welcome="<pre  id='welcome'>welcome "+session.getAttribute("name")+"</pre>";
 		}
 		else
 		{ 
@@ -81,11 +84,12 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "	color:#138D75;"
 				+ "font-size:1.2vw;"
 				+ "font-weight:bold;"
-				+ "font-family: 'Lato', sans-serif;"
+				+ "font-family: 'Lato', sans-serif;margin-left:20px;"
 				+ "}"
+				+"#welcome{padding:0px;margin:0px;margin-top:2px;font-family: 'Lato', sans-serif;color:#45B39D;padding-bottom:10px;}"
 				+ ".Register{"
 				+ "color:#138D75;"
-				+ "font-family: 'Lato', sans-serif;"
+				+ "font-family: 'Lato', sans-serif;color:#48C9B0;"
 				+ "font-size:1.2vw;"
 				+ "font-weight:bold;"
 				+ "margin-top:5px;"
@@ -148,6 +152,7 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "</div>"
 				+ "<div class='user'>"
 				+ log
+				+welcome
 				+ "</div>"					
 				+ "</div>"						
 				+ "<div >"
@@ -160,18 +165,10 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "</nav>"
 				+"<div>"
 				+"<div class='list1' style='width:22%'>"
-				+"<p style='font-size:20px; color:#616A6B; text-align:center;width:90%'>List Of Organizations</p>"
+				+"<p style='font-size:20px; color:#616A6B; text-align:center;width:90%'>Registered Organizations</p>"
 				+"<marquee bgcolor=''scrollamount='4' direction='up' loop='true' height='300' width='90%'>"
 				+"<center>"
-				+"<font>Chaitanya Barathi Institute Of Technology</font><p>"
-				+"<font>Vasavi College Of engineering</font><p>" 
-				+"<font>Indian Institue Of Technology,Mumbai</font><p>"
-				+"<font>VIT</font><p>"
-				+"<font>GITAM</font><p>"
-				+"<font>SRM</font><p>"
-				+"<font>Anna University</font><p>"
-				+"<font>IIST</font><p>"
-				+"<font>Mathrusri Engineering College</font><p>"
+				+colleges.collegeLoc()
 				+"</center>"
 				+"</marquee>"
 				+"</div>"
@@ -187,24 +184,18 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "  step++;"
 				+ "	 else"
 				+ "  step=0;"
-				+ "	 setTimeout('slideit()',5000);"
+				+ "	 setTimeout('slideit()',10000);"
 				+ "}"
 				+ "slideit();"
 				+ "</script>"
 				+ "</div>"
 				+"<div class='list3' style='width:22%'>"
 				+"<p style='font-size:20px; color:#616A6B; text-align:center;width:90%'>Types Of Events</p>"
-				+"<marquee bgcolor=''scrollamount='4' direction='up' loop='true' height='300' width='90%'>"
-				+"<center>"
-				+"<font>Technical Events</font><p>"
-				+"<font>Cultural Events</font><p>" 
-				+"<font>Concerts</font><p>"
-				+"<font>Competitive Events</font><p>"
-				+"<font>Sports Events</font><p>"
-				+"<font>College Fests</font><p>"
-				+"<font>Public Events</font><p>"
-				+"</center>"
-				+"</marquee>"
+				+ "<marquee onmouseover='this.stop();' onmouseout='this.start();' bgcolor='' scrollamount='4' direction='up' loop='true' height='300' width='90%'>"
+				+ "<center>"
+				+colleges.collegeNames()
+				+ "</center>"
+				+ "</marquee>"
 				+"</div>"
 				+"</div>"
 				+ "</body>"
@@ -214,7 +205,63 @@ response.setContentType("text/html;charset=UTF-8");
 
 	static class colleges
 	{
-  
+		public static String collegeNames() 
+	    {
+	    String s="";
+	     try{
+	    	 //loading drivers for mysql
+	        Class.forName("com.mysql.jdbc.Driver");
+
+		 //creating connection with the database 
+	        Connection con=DriverManager.getConnection
+	                       ("jdbc:mysql://localhost:3306/miniproject","root","1324");
+		
+		
+		
+	PreparedStatement statement = con.prepareStatement("SELECT DISTINCT festName,url FROM event");
+		ResultSet rs=statement.executeQuery();
+		while(rs.next()){
+		s=s+"<a style='font-size:1.2VW;font-family: Georgia;' target='_blank'  href="+rs.getString("url")+" ><font>"+rs.getString("festName")+"</font></a><br><br>";
+		
+		}
+		
+
+	     }catch(Exception e)
+	     {
+	         e.printStackTrace();
+	     }
+
+	    return s;  	
+	 }  
+		public static String collegeLoc() 
+	    {
+	    String s="";
+	     try{
+	    	 //loading drivers for mysql
+	        Class.forName("com.mysql.jdbc.Driver");
+
+		 //creating connection with the database 
+	        Connection con=DriverManager.getConnection
+	                       ("jdbc:mysql://localhost:3306/miniproject","root","1324");
+		
+		
+		
+	PreparedStatement statement = con.prepareStatement("SELECT DISTINCT eventlocation FROM event");
+		ResultSet rs=statement.executeQuery();
+		while(rs.next()){
+		s=s+"<p style='font-size:1.2VW;font-family: Georgia;'><font>"+rs.getString("eventlocation")+"</font></p>";
+		
+		}
+		
+
+	     }catch(Exception e)
+	     {
+	         e.printStackTrace();
+	     }
+
+	    return s;  	
+	 }  
+		
 
 	public static String eventPics() 
 	    {
