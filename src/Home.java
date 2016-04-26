@@ -1,5 +1,5 @@
 
-
+import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -23,7 +23,7 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 response.setContentType("text/html;charset=UTF-8");
-		
+		int j=colleges.strLength();
 		String log="";
 		HttpSession session=request.getSession(false);
 		if(session!=null){
@@ -37,10 +37,11 @@ response.setContentType("text/html;charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html>"
+				+ "<title>CollegeFests.com</title>"
 				+ "<head>"
 				+ "<script type='text/javascript'>"
 				+ "var slideimages = new Array() ;"
-				 
+				+colleges.eventPics() 
 						+ "</script>"
 				+ "<style>"
 				+ ".heading{"
@@ -78,14 +79,14 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "}"
 				+ ".SignIn{"
 				+ "	color:#138D75;"
-				+ "font-size:1vw;"
+				+ "font-size:1.2vw;"
 				+ "font-weight:bold;"
 				+ "font-family: 'Lato', sans-serif;"
 				+ "}"
 				+ ".Register{"
 				+ "color:#138D75;"
 				+ "font-family: 'Lato', sans-serif;"
-				+ "font-size:1vw;"
+				+ "font-size:1.2vw;"
 				+ "font-weight:bold;"
 				+ "margin-top:5px;"
 				+ "}"
@@ -155,7 +156,7 @@ response.setContentType("text/html;charset=UTF-8");
 				+ "<nav>"
 				+ " <a href='ret'>EVENTS </a> "
 				+ "<a href='publishcheck'>PUBLISH AN EVENT </a> "
-				+ "<a href='http://localhost:8080/sample/About.html'>ABOUT  </a>"
+				+ "<a href='http://localhost:8085/sample/About.html'>ABOUT  </a>"
 				+ "</nav>"
 				+"<div>"
 				+"<div class='list1' style='width:22%'>"
@@ -182,11 +183,11 @@ response.setContentType("text/html;charset=UTF-8");
 				+" if (!document.images)"
 					+" return ;"
 				+"document.getElementById('slide').src = slideimages[step].src;"
-				+ " if (step<4)"
+				+ " if (step<="+j+")"
 				+ "  step++;"
 				+ "	 else"
 				+ "  step=0;"
-				+ "	 setTimeout('slideit()',3000);"
+				+ "	 setTimeout('slideit()',5000);"
 				+ "}"
 				+ "slideit();"
 				+ "</script>"
@@ -211,6 +212,65 @@ response.setContentType("text/html;charset=UTF-8");
 				
 	}
 
-	
+	static class colleges
+	{
+  
 
+	public static String eventPics() 
+	    {
+	    String s="";
+	     try{
+	    	 //loading drivers for mysql
+	        Class.forName("com.mysql.jdbc.Driver");
+
+		 //creating connection with the database 
+	        Connection con=DriverManager.getConnection
+	                       ("jdbc:mysql://localhost:3306/miniproject","root","1324");
+		PreparedStatement statement = con.prepareStatement("SELECT * FROM event");
+		ResultSet rs=statement.executeQuery();
+		int m=0;
+		String vx="";
+		while(rs.next()){
+			  vx="img?id="+rs.getString("rowid");
+		s=s+"slideimages["+m+"] = new Image();"+ "slideimages["+m+"].src ='"+vx+"';";
+		m++;
+		}
+
+	     }catch(Exception e)
+	     {
+	         e.printStackTrace();
+	     }
+
+	    return s;  	
+	 }  
+
+	 
+	public static int strLength() 
+	   {int len=0;
+	    try{
+	   	 
+		 //loading drivers for mysql
+	       Class.forName("com.mysql.jdbc.Driver");
+
+		 //creating connection with the database 	
+	       Connection con=DriverManager.getConnection
+	                      ("jdbc:mysql://localhost:3306/miniproject","root","1324");
+		PreparedStatement statement = con.prepareStatement("SELECT * FROM event");
+
+		
+	  ResultSet rs=statement.executeQuery();
+		while(rs.next()){
+			len++;
+		}
+		
+
+	    }catch(Exception e)
+	    {
+	        e.printStackTrace();
+	    }
+
+	   return len;  	
+	} 
+
+}
 }
