@@ -26,15 +26,19 @@ public class Publish extends HttpServlet {
 	String time=request.getParameter("time");
 	String location=request.getParameter("location");
 	String fee=request.getParameter("fee");
+	String festName=request.getParameter("festName");
+	String url=request.getParameter("url");
 InputStream inputStream=null;
 Part filePart=request.getPart("photo");
 inputStream=filePart.getInputStream();
         PrintWriter out = response.getWriter();
-       int i=PublishForm.addUser(event,info,location,phone,fee,date,time,cname,inputStream);
+       int i=PublishForm.addUser(event,info,location,phone,fee,date,time,cname,inputStream,festName,url);
 		if(i>0)
 		{
-			out.println("Please sign in to view events ");
-			  RequestDispatcher rs = request.getRequestDispatcher("Home.html");
+			out.println("PUBLISHED SUCCESSFULLY");
+			response.setContentType("text/html;charset=UTF-8");
+			
+			  RequestDispatcher rs = request.getRequestDispatcher("eventForm.html");
                rs.include(request, response);
 		}
 		
@@ -48,7 +52,7 @@ inputStream=filePart.getInputStream();
  {
 
 	
-     public static int addUser(String event,String info,String location,String phone,String fee,String date,String time,String cname,InputStream inputStream) 
+     public static int addUser(String event,String info,String location,String phone,String fee,String date,String time,String cname,InputStream inputStream,String festName,String url) 
      {  int rs=0;
       try{
 		 
@@ -57,7 +61,7 @@ inputStream=filePart.getInputStream();
  	 //creating connection with the database 
          Connection con=DriverManager.getConnection
                         ("jdbc:mysql://localhost:3306/miniproject","root","1324");
-	PreparedStatement statement = con.prepareStatement("INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?)");
+	PreparedStatement statement = con.prepareStatement("INSERT INTO event VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
 statement.setString(1,event);
 statement.setString(2,info);
 
@@ -70,6 +74,8 @@ statement.setString(7,time);
 statement.setString(8,cname);
 statement.setBlob(9,inputStream);
 statement.setString(10,null);
+statement.setString(11,festName);
+statement.setString(12,url);
     rs=statement.executeUpdate();
  
  

@@ -17,7 +17,7 @@ import java.sql.*;
 @WebServlet("/ImgRetriver")
 public class ImgRetriver extends HttpServlet{
 	 int m=1;
-	static int id=3;
+	static int id=1;
 	public void doGet(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
      PrintWriter out=res.getWriter();
      String data="man";
@@ -34,7 +34,7 @@ public class ImgRetriver extends HttpServlet{
          out.println("</head>");
          out.println("<body>");
          out.println("<p class=\"p\">What's New</p>");
-         out.println("<div><nav ><a href=\"home\">HOME  </a><a href=\"publishcheck\">PUBLISH AN EVENT </a> <a href=\"http://localhost:8080/sample/About.html\">ABOUT  </a></nav</div><br>");
+         out.println("<div><nav ><a href=\"home\">HOME  </a><a href=\"publishcheck\">PUBLISH AN EVENT </a> <a href=\"http://localhost:8085/sample/About.html\">ABOUT  </a></nav</div><br>");
          out.println("</body>");
       while(j!=0){if(Event.exist(m)){
     	  String x=Integer.toString(m);

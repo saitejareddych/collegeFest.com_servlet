@@ -117,8 +117,8 @@ public class EventRegister extends HttpServlet {
 						+ "<input type='text' class= 'button'  name='name1' placeholder='NAME' required > <input type='text' class= 'button' id='location' name='clgname' placeholder='COLLEGE NAME' required><br>"
 						+ "	<input type='text' class= 'button' id='cname' name='year' placeholder='GRADUATING YEAR' required> "
 						+ "<input type='text' class= 'button'  name='branch' placeholder='BRANCH' required><br>"
-						+ "<input type='text' class= 'button' id='phone' name='phone' placeholder='PHONE'  style='width:25vw;' required><br>"
-						+ "<input type='text' class= 'button' id='fee' name='mailid' placeholder='EMAIL'  style='width:25vw;' required><br>"
+						+ "<input type='number' min='0' class= 'button' id='phone' name='phone' placeholder='PHONE'  style='width:25vw;' required><br>"
+						+ "<input type='email' class= 'button' id='fee' name='mailid' placeholder='EMAIL'  style='width:25vw;' required><br>"
 						+"<input type='hidden' name='festname' value='"+festname+"'>");
 	      	out.println("<input type='submit'  class=\"button\"  id=\"submit\" value='SUBMIT & PRINT'>");
 	      	out.println("</form>");

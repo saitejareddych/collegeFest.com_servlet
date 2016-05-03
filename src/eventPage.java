@@ -41,7 +41,6 @@ public class eventPage extends HttpServlet {
 	  		+ "<p class='heading'>"
 	  		+festname
 	  		+"</p>"
-	  	 +"<div><nav class='navi' ><a href=\"http://localhost:8080/sample/Home.html\">HOME  </a> <a href=\"http://localhost:8080/sample/About.html\">EVENTS  </a></nav></div><br>"
 	  		+ "<div class='description'>"
 	  		+aboutevent
 	  		+"</p>"

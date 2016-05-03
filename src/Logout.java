@@ -25,10 +25,9 @@ public class Logout extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session=request.getSession(false);
+		 
 		session.invalidate();
 		PrintWriter out = response.getWriter();
-	       
-		out.println("You are successfully logged out");
 		  RequestDispatcher rs = request.getRequestDispatcher("Home");
          rs.include(request, response);
 

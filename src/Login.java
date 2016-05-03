@@ -36,19 +36,19 @@ public class Login extends HttpServlet {
         
         if(Validate.checkUser(uname,pass))
         {
-		out.println("login successful..Now You can Publish Your Event");
         	HttpSession session=request.getSession(); 
         	
         	response.setContentType("text/html;charset=UTF-8");
             session.setAttribute("name",uname);  
+            
             RequestDispatcher rs = request.getRequestDispatcher("home");
             rs.include(request, response);
       
 }
         else
-        {
-           out.println("Username or Password incorrect");
-           RequestDispatcher rs = request.getRequestDispatcher("login.html");
+        {response.setContentType("text/html;charset=UTF-8");
+           
+           RequestDispatcher rs = request.getRequestDispatcher("Wrong.html");
            rs.include(request, response);
         }
     }  

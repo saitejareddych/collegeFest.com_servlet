@@ -33,8 +33,7 @@ public class Register extends HttpServlet {
 	       int i=ValidateForm.addUser( uname,pass,fname,lname,phone,college,designation,cphone,est,city,state);
 			if(i>0)
 			{
-				out.println("Please sign in to view events ");
-				  RequestDispatcher rs = request.getRequestDispatcher("Login.html");
+				  RequestDispatcher rs = request.getRequestDispatcher("Registered.html");
 	               rs.include(request, response);
 			}
 			

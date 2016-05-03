@@ -32,7 +32,8 @@ public class PublishCheck extends HttpServlet {
 		else
 		{ 
 			PrintWriter out = response.getWriter();
-	       		   out.println("plz login");
+			response.setContentType("text/html");
+			
 			  RequestDispatcher rs = request.getRequestDispatcher("/Login.html");
                           rs.include(request,response);
 		}
